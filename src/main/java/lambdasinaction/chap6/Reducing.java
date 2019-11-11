@@ -5,7 +5,7 @@ import static lambdasinaction.chap6.Dish.menu;
 
 public class Reducing {
 
-    public static void main(String ... args) {
+    public static void main(String... args) {
         System.out.println("Total calories in menu: " + calculateTotalCalories());
         System.out.println("Total calories in menu: " + calculateTotalCaloriesWithMethodReference());
         System.out.println("Total calories in menu: " + calculateTotalCaloriesWithoutCollectors());
@@ -20,6 +20,7 @@ public class Reducing {
         return menu.stream().collect(reducing(0, Dish::getCalories, Integer::sum));
     }
 
+    // no use collectors.reducing
     private static int calculateTotalCaloriesWithoutCollectors() {
         return menu.stream().map(Dish::getCalories).reduce(Integer::sum).get();
     }

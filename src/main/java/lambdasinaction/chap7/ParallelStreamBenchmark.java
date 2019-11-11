@@ -19,9 +19,9 @@ import org.openjdk.jmh.annotations.Warmup;
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Fork(value=2, jvmArgs={"-Xms4G", "-Xmx4G"})
-@Measurement(iterations=2)
-@Warmup(iterations=3)
+@Fork(value = 2, jvmArgs = {"-Xms4G", "-Xmx4G"})
+@Measurement(iterations = 2)
+@Warmup(iterations = 3)
 public class ParallelStreamBenchmark {
 
     private static final long N = 10_000_000L;
@@ -37,22 +37,22 @@ public class ParallelStreamBenchmark {
 
     @Benchmark
     public long sequentialSum() {
-        return Stream.iterate( 1L, i -> i + 1 ).limit(N).reduce( 0L, Long::sum );
+        return Stream.iterate(1L, i -> i + 1).limit(N).reduce(0L, Long::sum);
     }
 
     @Benchmark
     public long parallelSum() {
-        return Stream.iterate(1L, i -> i + 1).limit(N).parallel().reduce( 0L, Long::sum);
+        return Stream.iterate(1L, i -> i + 1).limit(N).parallel().reduce(0L, Long::sum);
     }
 
     @Benchmark
     public long rangedSum() {
-        return LongStream.rangeClosed( 1, N ).reduce( 0L, Long::sum );
+        return LongStream.rangeClosed(1, N).reduce(0L, Long::sum);
     }
 
     @Benchmark
     public long parallelRangedSum() {
-        return LongStream.rangeClosed(1, N).parallel().reduce( 0L, Long::sum);
+        return LongStream.rangeClosed(1, N).parallel().reduce(0L, Long::sum);
     }
 
     @TearDown(Level.Invocation)
