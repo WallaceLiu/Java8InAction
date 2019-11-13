@@ -1,5 +1,7 @@
 package lambdasinaction.chap7;
 
+// code 7.4
+
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;
@@ -46,6 +48,7 @@ public class WordCount {
         return wordCounter.getCounter();
     }
 
+    //
     private static class WordCounter {
         private final int counter;
         private final boolean lastSpace;

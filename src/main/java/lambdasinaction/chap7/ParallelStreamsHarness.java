@@ -3,6 +3,12 @@ package lambdasinaction.chap7;
 import java.util.concurrent.*;
 import java.util.function.*;
 
+/**
+ * ways compare
+ *
+ * @author: liuning11
+ * @date: 2019-11-11
+ */
 public class ParallelStreamsHarness {
 
     public static final ForkJoinPool FORK_JOIN_POOL = new ForkJoinPool();
