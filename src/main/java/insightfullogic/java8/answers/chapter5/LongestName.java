@@ -1,6 +1,6 @@
 package insightfullogic.java8.answers.chapter5;
 
-import com.insightfullogic.java8.examples.chapter1.Artist;
+import insightfullogic.java8.examples.chapter1.Artist;
 
 import java.util.Comparator;
 import java.util.List;

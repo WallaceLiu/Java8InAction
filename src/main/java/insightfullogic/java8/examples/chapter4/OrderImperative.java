@@ -1,8 +1,8 @@
 package insightfullogic.java8.examples.chapter4;
 
 
-import com.insightfullogic.java8.examples.chapter1.Album;
-import com.insightfullogic.java8.examples.chapter1.Track;
+import insightfullogic.java8.examples.chapter1.Album;
+import insightfullogic.java8.examples.chapter1.Track;
 
 import java.util.List;
 

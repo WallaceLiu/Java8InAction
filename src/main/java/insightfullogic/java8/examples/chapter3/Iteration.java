@@ -1,6 +1,6 @@
 package insightfullogic.java8.examples.chapter3;
 
-import com.insightfullogic.java8.examples.chapter1.Artist;
+import insightfullogic.java8.examples.chapter1.Artist;
 
 import java.util.Iterator;
 import java.util.List;

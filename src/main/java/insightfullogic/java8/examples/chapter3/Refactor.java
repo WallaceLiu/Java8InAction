@@ -1,7 +1,7 @@
 package insightfullogic.java8.examples.chapter3;
 
-import com.insightfullogic.java8.examples.chapter1.Album;
-import com.insightfullogic.java8.examples.chapter1.Track;
+import insightfullogic.java8.examples.chapter1.Album;
+import insightfullogic.java8.examples.chapter1.Track;
 
 import java.util.HashSet;
 import java.util.List;
