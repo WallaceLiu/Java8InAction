@@ -1,20 +1,22 @@
 package lambdasinaction.funcinterface;
 
+// Predicate boolean test(T t);
+// Function R apply(T t);
+// Supplier T get();
+// Consumer void accept(T t);
+//
+// Supplier correspond to POJO get
+// Consumer correspond to POJO set
+
 import com.google.common.collect.Lists;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.function.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-/**
- * @program Java8InAction
- * @description:
- * @author: liuning11
- * @create: 2019/11/11
- */
 public class FuncTest {
     List<String> list;
 
@@ -25,10 +27,10 @@ public class FuncTest {
 
     @Test
     public void testPredicate() {
-        // boolean test(T t);
-        Predicate<String> isEndWithSql = (s) -> s.endsWith(".sql");// 传入的字符串是否以 .sql 结尾
-        Predicate<String> notEndWithSql = isEndWithSql.negate();// 传入的字符串非 .sql 结尾
-        Predicate<List<String>> isEmptyList = List::isEmpty;// 判断集合是否为空
+        // 4 ways create func interface
+        Predicate<String> isEndWithSql = (s) -> s.endsWith(".sql"); // str suffixed by .sql
+        Predicate<String> notEndWithSql = isEndWithSql.negate(); // str not suffixed by .sql
+        Predicate<List<String>> isEmptyList = List::isEmpty; // if or not collect is empty
         Predicate<Integer> predicate = x -> x > 10;
 
         System.out.println(isEndWithSql.test("test.sql"));
@@ -42,14 +44,13 @@ public class FuncTest {
         System.out.println(biPredicate("a", "b", (String s1, String s2) -> s1.equals(s2)));
     }
 
-    public static <T, U> boolean biPredicate(T t, U u, BiPredicate<T, U> biPredicate) {
+    private static <T, U> boolean biPredicate(T t, U u, BiPredicate<T, U> biPredicate) {
         return biPredicate.test(t, u);
     }
 
     @Test
     public void testFunction() {
-        // R apply(T t);
-        Function<String, Integer> toInteger = s -> Integer.valueOf(s); // 字符串转为 Integer
+        Function<String, Integer> toInteger = s -> Integer.valueOf(s); // str convert to Integer
         System.out.println(toInteger.apply("222"));
         toInteger = Integer::valueOf;
         System.out.println(toInteger.apply("222"));
@@ -76,11 +77,9 @@ public class FuncTest {
         return biFunction.apply(a, b);
     }
 
-    // Supplier correspond to POJO get
-    // Consumer correspond to POJO set
     @Test
     public void testSupplier() {
-        // T get();
+        //
         Supplier<StringBuilder> sbSupplier = StringBuilder::new;
         StringBuilder sb = sbSupplier.get();
         Supplier<Date> sup = Date::new;
@@ -91,7 +90,7 @@ public class FuncTest {
 
     @Test
     public void testConsumer() {
-        // void accept(T t);
+        //
         Consumer<Runnable> runnableConsumer = (run) -> new Thread(run).start();
         runnableConsumer.accept(() -> {
             try {
@@ -132,6 +131,21 @@ public class FuncTest {
         person.forEach(p -> {
             consumer.accept(p);
         });
+    }
+
+
+    @Test
+    public void t() {
+        Set<String> s = Stream.of("1", "2", "3", "4", "5").collect(Collectors.toSet());
+        System.out.println(s);
+        tt(s);
+        System.out.println(s);
+
+    }
+
+    private void tt(Set<String> t) {
+        List<String> ttttt=Lists.newArrayList(t);
+        Collections.shuffle(Lists.newArrayList(t));
     }
 }
 /*  output:
